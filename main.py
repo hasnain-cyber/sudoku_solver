@@ -1,9 +1,11 @@
-import time
 import sys
+import time
+
 from hfun import *
 
 pygame.init()
-grid = [[0 for i in range(9)] for i in range(9)]
+
+grid = [[0 for i in range(9)] for j in range(9)]
 engaged = False
 pygame.display.set_caption('SUDOKU SOLVER')
 
@@ -13,7 +15,7 @@ surface = pygame.display.set_mode((WIDTH, WIDTH))
 def solve():
     global grid
     for i in range(9):
-        time.sleep(0.01) # to make it look cool !
+        time.sleep(0.01)  # to make it look cool !
         for j in range(9):
 
             if grid[i][j] == 0:
@@ -47,8 +49,8 @@ def solve():
                 return
     pygame.display.set_caption('SOLVED')
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+        for event1 in pygame.event.get():
+            if event1.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit(0)
 
@@ -84,6 +86,7 @@ while run:
             if engaged:
                 number = 0
                 if event.key == pygame.K_0:
+                    # noinspection PyUnboundLocalVariable
                     pygame.draw.rect(surface, WHITE, [rec_pos[0] + 2, rec_pos[1] + 2, rect_width - 2, rect_width - 2])
                     number = 0
                 elif event.key == pygame.K_1:
