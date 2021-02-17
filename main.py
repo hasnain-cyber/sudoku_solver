@@ -13,7 +13,6 @@ recPos = (0, 0)
 def solve():
     global grid
     for i in range(9):
-        # time.sleep(0.01)  # to make it look cool !
         for j in range(9):
 
             if grid[i][j] == 0:
