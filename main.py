@@ -14,7 +14,6 @@ def solve():
     global grid
     for i in range(9):
         for j in range(9):
-
             if grid[i][j] == 0:
                 for n in range(1, 10):
                     if verify(i, j, n, grid):
@@ -64,6 +63,20 @@ def set_stage():
             pygame.draw.line(surface, BLACK, (0, rect_width * i), (WIDTH, rect_width * i))
             pygame.draw.line(surface, BLACK, (rect_width * i, 0), (rect_width * i, WIDTH))
     pygame.display.update()
+    drawBorder(recPos, False)
+
+
+def drawBorder(position, erase):
+    color = RED
+    if erase:
+        color = BLACK
+    pygame.draw.line(surface, color, position, (position[0] + rect_width, position[1]))
+    pygame.draw.line(surface, color, position, (position[0], position[1] + rect_width))
+    pygame.draw.line(surface, color, (position[0] + rect_width, position[1]),
+                     (position[0] + rect_width, position[1] + rect_width))
+    pygame.draw.line(surface, color, (position[0], position[1] + rect_width),
+                     (position[0] + rect_width, position[1] + rect_width))
+    pygame.display.update()
 
 
 set_stage()
@@ -73,7 +86,9 @@ while run:
         if event.type == pygame.QUIT:
             run = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            drawBorder(recPos, True)
             recPos = get_tile(pygame.mouse.get_pos())
+            drawBorder(recPos, False)  # draw new square borders.
         elif event.type == pygame.KEYDOWN:
             number = 0
             if event.key == pygame.K_0:

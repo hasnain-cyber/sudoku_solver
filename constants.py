@@ -1,10 +1,11 @@
 import pygame
 
 WIDTH = 600
-rect_width = WIDTH/9
+rect_width = WIDTH / 9
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+RED = (255, 0, 0)
 
 ONE = pygame.image.load('DigitImages/one.jpg')
 TWO = pygame.image.load('DigitImages/two.jpg')
